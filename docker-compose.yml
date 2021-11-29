@@ -5,16 +5,25 @@ services:
     container_name: db
     image: wachira90/postgres:10.15
     restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data-1015/:/var/lib/postgresql/data/:rw
     environment:
-      POSTGRES_PASSWORD: zxczxc
-      POSTGRES_USER: postgres
-      POSTGRES_DB: testdb
+      POSTGRES_USER : postgres
+      POSTGRES_PASSWORD : example
+      POSTGRES_DB : testdb
+    networks:
+      pgsql_lan:
 
   adminer:
     container_name: adminer
-    image: wachira90/adminer:4.7.8
+    image: adminer:4.7.8-standalone
     restart: always
-    depends_on:
-      - db
     ports:
       - 8080:8080
+    networks:
+      pgsql_lan: 
+
+networks:
+    pgsql_lan:
