@@ -8,7 +8,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./data-1015/:/var/lib/postgresql/data/:rw
+      - ./data/:/var/lib/postgresql/data/:rw
     environment:
       POSTGRES_USER : postgres
       POSTGRES_PASSWORD : example
