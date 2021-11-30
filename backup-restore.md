@@ -1,4 +1,4 @@
-# pg_dump command example
+# pg_dump command example ( Backup )
 ## Dumping a database called dangerousdb into an SQL file:
 ````
 pg_dump dangerousdb > db.sql
@@ -26,4 +26,21 @@ pg_dump -t tallytab dangerousdb > db.sql
 ## Dumping selected tables by putting in conditions. Here the command will dump all tables that start with "sam" in the "ple" schema, but will exclude the table "samson."
 ````
 pg_dump -t 'ple.sam*' -T ple.samson dangerousdb > db.sql
+````
+
+
+# pg_restore command example ( Restore )
+### Restoring a backup with a .tar file name requires that the user consider whether the database already exists, and what the format of the backup is.
+
+## If the database dbcooper already exists, the following command will restore it:
+````
+pg_restore -U postgres -Ft -d dbcooper < dbcooper.tar
+````
+## If the database doesn't yet exist, tweaking the command like the following will restore it:
+````
+pg_restore -U postgres -Ft -C -d dbcooper < dbcooper.tar
+````
+## The following command will restore a backup from a backup file i.e. name: back_it_on_up.sql
+````
+psql -f back_it_on_up.sql
 ````
