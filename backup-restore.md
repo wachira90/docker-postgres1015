@@ -44,3 +44,20 @@ pg_restore -U postgres -Ft -C -d dbcooper < dbcooper.tar
 ````
 psql -f back_it_on_up.sql
 ````
+
+
+# pg_dumpall command example
+
+## The following command will dump all databases:
+````
+pg_dumpall > db.out
+````
+## This command will reload databases from file:
+````
+psql -f db.out postgres
+````
+## This command will dump all files and create a single file called back_it_on_up.sql
+````
+pg_dumpall -f back_it_on_up.sql
+````
+
