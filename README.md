@@ -16,7 +16,7 @@ docker-compose up -d
 ````
 wget https://github.com/wachira90/docker-postgres1015/raw/main/dvdrental.zip
 
-zip dvdrental.zip
+unzip dvdrental.zip
 
 sudo cp dvdrental.tar data/dvdrental.tar
 
